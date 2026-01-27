@@ -14,7 +14,7 @@ cd ./btcrecover-main
 
 echo "INSTALLING THE PYTHON ENVIRONMENT..."
 
-ln -s /usr/bin/python3 /usr/local/bin/python
+ln -s /usr/bin/python3 /usr/local/bin/python 2>/dev/null
 export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 pip3 install -r requirements-full.txt --break-system-packages
 
@@ -22,12 +22,12 @@ echo "PREPARING FIREWALL RULES..."
 
 ufw disable>/dev/null
 ufw --force reset>/dev/null
-ufw default deny incoming
-ufw default deny outgoing
+ufw default deny incoming>/dev/null
+ufw default deny outgoing>/dev/null
 ufw allow in 22/tcp>/dev/null
 ufw allow out 22/tcp>/dev/null
 ufw allow out 53/udp>/dev/null
-ufw enable
+ufw --force enable
 
 echo "TO TEMPORARILY DISABLE THE FIREWALL, ENTER: ufw disable"
 echo ""
