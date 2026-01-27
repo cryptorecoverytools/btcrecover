@@ -6,5 +6,5 @@ To start using it, please rent a server with Debian/Ubuntu pre-installed and run
 
 ```bash
 apt update;apt -y install curl
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/cryptorecoverytools/btcrecover/refs/heads/main/init.sh)"
+source <(curl -fsSL https://raw.githubusercontent.com/cryptorecoverytools/btcrecover/refs/heads/main/init.sh)
 ```

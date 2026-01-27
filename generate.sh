@@ -22,7 +22,7 @@ ufw --force enable
 python btcrecover.py --bip39 --bip32-path "m/44'/0'/0'/0" --force-bip44 --disable-p2sh --disable-p2tr --disable-bip84 --addr-limit $1 --passwordlist $2 --mnemonic "$3" --dsw --skip-pre-start --no-dupchecks --no-dupchecks --no-dupchecks --no-dupchecks
 
 echo ""
-echo "To prepare a safe file containing only addresses, please run the following script: prepare.sh"
+echo "To prepare a safe file containing only addresses, please run the following script: ./prepare.sh"
 echo ""
 
 history -c
