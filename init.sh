@@ -8,9 +8,9 @@ apt -y remove python3-urllib3
 
 echo "DOWNLOADING BTCRECOVER REPOSITORY..."
 
-wget https://github.com/cryptorecoverytools/btcrecover/archive/refs/heads/main.zip
-unzip main.zip
-cd ./btcrecover-main
+wget -O main.zip https://github.com/cryptorecoverytools/btcrecover/archive/refs/heads/main.zip
+unzip -o main.zip
+cd btcrecover-main
 
 echo "INSTALLING THE PYTHON ENVIRONMENT..."
 
