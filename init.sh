@@ -5,7 +5,7 @@ echo "*** INSTALLING ALL DEPENDENCIES ***"
 echo ""
 
 apt update
-apt -y install wget unzip ufw crunch pv python3-pip python3-dev pkg-config build-essential libssl-dev libffi-dev autoconf libtool rustup swig
+apt -y install wget unzip ufw crunch pv python3-pip python3-pyopencl python3-dev pkg-config build-essential libssl-dev libffi-dev autoconf libtool rustup swig
 apt -y remove python3-urllib3 python3-cryptography python3-idna
 rustup update stable
 
