@@ -5,7 +5,7 @@ echo "*** INSTALLING ALL DEPENDENCIES ***"
 echo ""
 
 apt update
-apt -y install wget unzip ufw crunch pv python3-pip python3-pyopencl python3-dev pkg-config build-essential libssl-dev libffi-dev autoconf libtool rustup swig
+apt -y install wget unzip ufw crunch pv python3-pip python3-dev pkg-config build-essential libssl-dev libffi-dev autoconf libtool rustup swig
 apt -y remove python3-urllib3 python3-cryptography python3-idna
 rustup update stable
 
@@ -24,6 +24,7 @@ echo ""
 ln -s /usr/bin/python3 /usr/local/bin/python 2>/dev/null
 export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 pip3 install -r requirements-full.txt --break-system-packages
+apt -y install python3-pyopencl
 
 echo ""
 echo "*** PREPARING FIREWALL RULES ***"
