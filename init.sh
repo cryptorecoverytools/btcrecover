@@ -25,7 +25,9 @@ echo ""
 
 ln -s /usr/bin/python3 /usr/local/bin/python 2>/dev/null
 export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
-pip3 install -r requirements-full.txt --break-system-packages
+export PIP_BREAK_SYSTEM_PACKAGES=1
+pip3 install maturin
+pip3 install -r requirements-full.txt
 apt -y install python3-pyopencl
 
 echo ""
