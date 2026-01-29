@@ -16,7 +16,7 @@ echo "*** DOWNLOADING BTCRECOVER REPOSITORY ***"
 echo ""
 
 wget -O main.zip https://github.com/cryptorecoverytools/btcrecover/archive/refs/heads/main.zip
-unzip -o main.zip
+unzip -oq main.zip
 cd btcrecover-main
 
 echo ""
