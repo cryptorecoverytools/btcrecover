@@ -4164,7 +4164,7 @@ class WalletBIP39(object):
             else:
                 seed_bytes = result
 
-            if self.btcrseed_wallet._verify_seed(seed_bytes):
+            if self.btcrseed_wallet._verify_seed(seed_bytes,password,output_file=ff):
                 return password.decode("utf_8", "replace"), count
 
         return False, count
