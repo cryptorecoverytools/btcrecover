@@ -5,8 +5,8 @@ echo "*** INSTALLING ALL DEPENDENCIES ***"
 echo ""
 
 apt update
-apt -y install wget unzip ufw crunch pv python3-dev python3-pip cargo autoconf build-essential libtool swig pkg-config
-apt -y remove python3-urllib3
+apt -y install wget unzip ufw crunch pv python3-pip python3-dev pkg-config build-essential libssl-dev libffi-dev autoconf libtool cargo swig
+apt -y remove python3-urllib3 python3-cryptography python3-idna
 
 echo ""
 echo "*** DOWNLOADING BTCRECOVER REPOSITORY ***"

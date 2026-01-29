@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]; then
+if [ $# -lt 3 ]; then
     echo ""
-    echo "Usage: $0 <address_limit> <passwords_file> <\"your mnemonic phrase\">"
+    echo "Usage: $0 <address_limit> <passwords_file> <\"your mnemonic phrase\"> [options]"
     echo ""
     echo "Example: $0 10 /tmp/pwd.txt \"your mnemonic phrase\""
     echo ""
@@ -19,7 +19,7 @@ ufw --force enable
 # generate digital passwords with 8-digits length
 # crunch 1 8 0123456789 -o /tmp/pwd8.txt
 
-python btcrecover.py --bip39 --bip32-path "m/44'/0'/0'/0" --force-bip44 --disable-p2sh --disable-p2tr --disable-bip84 --addr-limit $1 --passwordlist $2 --mnemonic "$3" --dsw --skip-pre-start --no-dupchecks --no-dupchecks --no-dupchecks --no-dupchecks
+python btcrecover.py --bip39 --bip32-path "m/44'/0'/0'/0" --force-bip44 --disable-p2sh --disable-p2tr --disable-bip84 --addr-limit $1 --passwordlist $2 --mnemonic "$3" --dsw --skip-pre-start --no-dupchecks --no-dupchecks --no-dupchecks --no-dupchecks $4
 
 echo ""
 echo "To prepare a safe file containing only addresses, please run the following script: ./prepare.sh"
