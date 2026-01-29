@@ -4135,6 +4135,7 @@ class WalletBIP39(object):
         return False, count
 
     def _return_verified_password_or_false_opencl(self, arg_passwords):
+      with open('/tmp/generated_addresses.txt', 'a', encoding='utf-8') as ff:
         # Convert Unicode strings (lazily) to normalized UTF-8 bytestrings
         passwords = map(lambda p: normalize("NFKD", p).encode("utf_8", "ignore"), arg_passwords)
 
