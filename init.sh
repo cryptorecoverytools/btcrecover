@@ -6,7 +6,7 @@ echo ""
 
 apt update
 apt -y install wget unzip ufw crunch pv python3-pip python3-dev pkg-config build-essential libssl-dev libffi-dev autoconf libtool swig
-apt -y remove python3-urllib3 python3-cryptography python3-idna python3-cffi-backend
+apt -y remove python3-urllib3 python3-cryptography python3-idna python3-cffi-backend python3-charset-normalizer
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 . "$HOME/.cargo/env"
 #apt -y install rustup;rustup update stable
