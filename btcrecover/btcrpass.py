@@ -9463,7 +9463,7 @@ def main():
                 pre_start_limit = None
 
         if skip_pre_start:
-            print("Skipping pre-start benchmark; progress estimates may be less accurate.")
+#            print("Skipping pre-start benchmark; progress estimates may be less accurate.")
             est_secs_per_password = fallback_estimate
         else:
             message = "Pre-start benchmark: measuring verification speed"
