@@ -2,9 +2,9 @@
 
 if [ $# -lt 3 ]; then
     echo ""
-    echo "Usage: $0 <address_limit> <passwords_file> <\"your mnemonic phrase\"> [options]"
+    echo "Usage: $0 <address_limit> <account_number> <passwords_file> <\"your mnemonic phrase\"> [options]"
     echo ""
-    echo "Example: $0 10 /tmp/pwd.txt \"your mnemonic phrase\""
+    echo "Example: $0 10 0 /tmp/pwd.txt \"your mnemonic phrase\""
     echo ""
     echo "where /tmp/pwd.txt is the file with pre-generated passwords using crunch tool"
     echo "to generate digital passwords with 8-digits length, use the following command:"
