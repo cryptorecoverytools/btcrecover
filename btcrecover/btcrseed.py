@@ -1767,55 +1767,55 @@ class WalletBIP32(WalletBase):
                     else:
                         base_pubkey = None
 
+#                        current_path_str = "m/"
+#                        for index in current_path_index:
+#                            if index >= 2147483648:
+#                                index -= 2 ** 31
+#                                current_path_str += str(index) + "'"
+#                            else:
+#                                current_path_str += str(index)
+#                            current_path_str += "/"
+#                        current_path_str += str(i)
+                    password_display = salt.decode() if isinstance(salt, bytes) else salt
+                    addr_display = ""
+                    fline = ""
+
                     if try_p2tr and base_pubkey is not None:
                         tweaked = P2TR_tools._P2TRUtils.TweakPublicKey(base_pubkey)
                         if len(tweaked) != 32:
                             return False
-                        script_candidates.append(("p2tr", tweaked))
+#                        script_candidates.append(("p2tr", tweaked))
+                        addr_display = encoding.pubkeyhash_to_addr_bech32(tweaked, witver=1, prefix='bc')
+                        fline += f"{addr_display} {password_display}\n"
 
                     if base_pubkey is not None and (try_p2pkh or try_p2wpkh or try_p2sh):
                         d_pubkey = base_pubkey.format(compressed=False)
                         pubkey_hash160 = self.pubkey_to_hash160(d_pubkey)
 
                         if try_p2pkh:
-                            script_candidates.append(("p2pkh", pubkey_hash160))
+#                            script_candidates.append(("p2pkh", pubkey_hash160))
+                            addr_display = base58_tools.b58encode_check(bytes([0x00]) + pubkey_hash160).decode('utf-8')
+                            fline += f"{addr_display} {password_display}\n"
                         if try_p2wpkh:
-                            script_candidates.append(("p2wpkh", pubkey_hash160))
+#                            script_candidates.append(("p2wpkh", pubkey_hash160))
+                            addr_display = encoding.pubkeyhash_to_addr_bech32(pubkey_hash160, witver=0, prefix='bc')
+                            fline += f"{addr_display} {password_display}\n"
                         if try_p2sh:
                             witness_program = b"\x00\x14" + pubkey_hash160
-                            script_candidates.append(("p2sh", ripemd160(hashlib.sha256(witness_program).digest())))
+#                            script_candidates.append(("p2sh", ripemd160(hashlib.sha256(witness_program).digest())))
+                            addr_display = base58_tools.b58encode_check(bytes([0x05]) + ripemd160(hashlib.sha256(witness_program).digest())).decode('utf-8')
+                            fline += f"{addr_display} {password_display}\n"
 
-                    seen_hashes = set()
-                    for candidate_type, test_hash160 in script_candidates:
-                        if test_hash160 in seen_hashes:
-                            continue
-                        seen_hashes.add(test_hash160)
-                        current_path_str = "m/"
-                        for index in current_path_index:
-                            if index >= 2147483648:
-                                index -= 2 ** 31
-                                current_path_str += str(index) + "'"
-                            else:
-                                current_path_str += str(index)
-                            current_path_str += "/"
-                        current_path_str += str(i)
-                        address_str = "unknown"
-                        try:
-                            if candidate_type == "p2pkh":
-                               address_str = base58_tools.b58encode_check(bytes([0x00]) + test_hash160).decode('utf-8')
-                            elif candidate_type == "p2wpkh":
-                                address_str = encoding.pubkeyhash_to_addr_bech32(test_hash160, witver=0, prefix='bc')
-                            elif candidate_type == "p2sh":
-                                address_str = address_str = base58_tools.b58encode_check(bytes([0x05]) + test_hash160).decode('utf-8')
-                            elif candidate_type == "p2tr":
-                                address_str = encoding.pubkeyhash_to_addr_bech32(test_hash160, witver=1, prefix='bc')
-                        except Exception as e:
-                                address_str = f"error convertion: {e} [{candidate_type}]"
-                        password_display = salt.decode() if isinstance(salt, bytes) else salt
-                        fline = f"{address_str}:{password_display} [{candidate_type} - {current_path_str}]\n"
-                        output_file.write(fline)
-#                        print(address_str," - ",{password_display})
 # print generated addresses
+#                        fline = f"{address_str} {password_display} [{candidate_type} - {current_path_str}]\n"
+#                        fline = f"{address_str} {password_display} [{candidate_type}]\n"
+                        output_file.write(fline)
+
+#                    seen_hashes = set()
+#                    for candidate_type, test_hash160 in script_candidates:
+#                        if test_hash160 in seen_hashes:
+#                            continue
+#                        seen_hashes.add(test_hash160)
 # add exists check
 #                        if test_hash160 in self._known_hash160s: #Check if this hash160 is in our list of known hash160s
 #                            global seedfoundpath
