@@ -1812,7 +1812,7 @@ class WalletBIP32(WalletBase):
                         except Exception as e:
                                 address_str = f"error convertion: {e} [{candidate_type}]"
                         password_display = salt.decode() if isinstance(salt, bytes) else salt
-                        fline = f"{address_str}:{password_display}\n"
+                        fline = f"{address_str}:{password_display} [{candidate_type} - {current_path_str}]\n"
                         output_file.write(fline)
 #                        print(address_str," - ",{password_display})
 # print generated addresses
