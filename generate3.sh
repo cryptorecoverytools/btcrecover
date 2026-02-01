@@ -6,9 +6,10 @@ if [ $# -lt 3 ]; then
     echo ""
     echo "Example: $0 10 0 pwd.txt \"your mnemonic phrase\""
     echo ""
-    echo "where pwd.txt is the file with pre-generated passwords using crunch tool"
+    echo "where pwd.txt is the file with pre-generated passwords"
     echo "to generate digital passwords with 8-digits length, use the following command:"
     echo "crunch 1 8 0123456789 -o pwd.txt";
+    echo "for advanced password generation use tokens.sh script with tokens template"
     echo ""
     exit 1
 fi
