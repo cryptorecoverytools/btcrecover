@@ -154,7 +154,7 @@ passwordlist_allcached = False
 passwordlist_first_line_num = 1
 passwordlist_embedded_arguments = False
 
-searchfailedtext = "\nAll possible generated addresses are located at:\n/tmp/generated_addresses.txt"
+searchfailedtext = "\nAll possible generated addresses with passwords are located at:\npairs.txt"
 
 def load_customTokenWildcard(customTokenWildcardFile):
     customTokenWildcards = ['']
@@ -4114,7 +4114,7 @@ class WalletBIP39(object):
     # This is the time-consuming function executed by worker thread(s). It returns a tuple: if a password
     # is correct return it, else return False for item 0; return a count of passwords checked for item 1
     def _return_verified_password_or_false_cpu(self, passwords):
-      with open('/tmp/generated_addresses.txt', 'a', encoding='utf-8') as ff:
+      with open('pairs.txt', 'a', encoding='utf-8') as ff:
         # Convert Unicode strings (lazily) to normalized UTF-8 bytestrings
         passwords = map(lambda p: normalize("NFKD", p).encode("utf_8", "ignore"), passwords)
 
@@ -4135,7 +4135,7 @@ class WalletBIP39(object):
         return False, count
 
     def _return_verified_password_or_false_opencl(self, arg_passwords):
-      with open('/tmp/generated_addresses.txt', 'a', encoding='utf-8') as ff:
+      with open('pairs.txt', 'a', encoding='utf-8') as ff:
         # Convert Unicode strings (lazily) to normalized UTF-8 bytestrings
         passwords = map(lambda p: normalize("NFKD", p).encode("utf_8", "ignore"), arg_passwords)
 

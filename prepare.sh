@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Enabling firewall..."
-ufw --force enable
+#echo "Enabling firewall..."
+#ufw --force enable
 echo ""
-awk -F':' '{print $1}' /tmp/generated_addresses.txt|pv -s $(stat -c%s /tmp/generated_addresses.txt)|gzip -1 > addr.gz
+pv -p -t -e -r -b -l -s $(wc -l < pairs.txt) pairs.txt | awk '{print $1}' > addr.txt
 echo ""
-echo "The final file is saved under: addr.gz"
+echo "The final file is saved under: addr.txt"
 echo "Please send it to us by any available method"

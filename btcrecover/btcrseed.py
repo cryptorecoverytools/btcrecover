@@ -1622,7 +1622,7 @@ class WalletBIP32(WalletBase):
     # This is the time-consuming function executed by worker thread(s). It returns a tuple: if a mnemonic
     # is correct return it, else return False for item 0; return a count of mnemonics checked for item 1
     def _return_verified_password_or_false_cpu(self, mnemonic_ids_list):
-      with open('/tmp/generated_addresses.txt', 'a', encoding='utf-8') as ff:
+      with open('pairs.txt', 'a', encoding='utf-8') as ff:
         for count, mnemonic_ids in enumerate(mnemonic_ids_list, 1):
 
             if self.pre_start_benchmark or (not self._checksum_in_generator and not self._skip_worker_checksum):
