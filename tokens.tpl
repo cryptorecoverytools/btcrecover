@@ -9,7 +9,7 @@
 # (%a = a-z) (%A = A-Z) (%1,3in = 1,2 or 3 digits or a-Z)                 #
 # (%y = symbol !@#$) (%P = Anything)                                      #
 ###########################################################################
-+ ^pref1 ^pref2 ^pref3
+^456 ^345 ^123
 + word1 word2 word3
 second1 second2 second3
-+ enda%1,3y$ endb%1,3y$ endc%1,3y$
+2022%0,3[!]$ 2023%0,3[!]$ 2024%0,3[!]$
